@@ -57,7 +57,7 @@ Core Expertise
 Technical Skills 
 
 * 
-**Top Skills:** Generative AI, .NET Framework, Microsoft Azure.
+**Top Skills:** AWS, Full-Stack Development, Generative AI, React.
 
 
 * 
