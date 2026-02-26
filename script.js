@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navbar scroll effect
     // ------------------------------------
     const navbar = document.querySelector('.navbar');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -33,6 +33,34 @@ document.addEventListener('DOMContentLoaded', () => {
             // Actually let's make it toggle
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         }
+    });
+
+    // ------------------------------------
+    // Mobile menu toggle
+    // ------------------------------------
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const toggleIcon = mobileToggle.querySelector('i');
+
+    mobileToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Swap between hamburger and close icon
+        if (navLinks.classList.contains('active')) {
+            toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-xmark');
+        } else {
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+        }
+    });
+
+    // Close menu when a nav link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+        });
     });
 
     // Initialize state
@@ -45,12 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
-            
+            if (targetId === '#') return;
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 // Offset for fixed navbar
-                const yOffset = -100; 
+                const yOffset = -100;
                 const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
                 window.scrollTo({
