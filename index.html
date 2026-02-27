@@ -59,6 +59,7 @@
                 <a href="#expertise">Expertise</a>
                 <a href="#experience">Experience</a>
                 <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
             </div>
             <div class="mobile-toggle">
                 <i class="fas fa-bars"></i>
@@ -321,6 +322,53 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact container section scroll-anim">
+        <div class="section-header">
+            <h2>Contact</h2>
+            <div class="line"></div>
+        </div>
+        <div class="glass card p-large contact-card">
+            <p class="text-light contact-intro">Have a project, opportunity, or question? Drop me a message and I'll get back to you.</p>
+            <form id="contactForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cf-name">Name</label>
+                        <input type="text" id="cf-name" placeholder="Your name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="cf-email">Email</label>
+                        <input type="email" id="cf-email" placeholder="your@email.com" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cf-subject">Subject</label>
+                    <select id="cf-subject">
+                        <option value="Job/Hiring Opportunity">Job/Hiring Opportunity</option>
+                        <option value="Project Collaboration">Project Collaboration</option>
+                        <option value="General Inquiry/Feedback">General Inquiry/Feedback</option>
+                        <option value="Media/Press Request">Media/Press Request</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cf-message">Message</label>
+                    <textarea id="cf-message" rows="5" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text"><i class="fas fa-paper-plane"></i> Send Message</span>
+                    <span class="btn-loading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+                </button>
+                <div id="form-success" class="form-success" style="display:none;">
+                    <i class="fas fa-check-circle"></i> Message sent! I'll get back to you soon.
+                </div>
+                <div id="form-error" class="form-error" style="display:none;">
+                    <i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again.
+                </div>
+            </form>
         </div>
     </section>
 
