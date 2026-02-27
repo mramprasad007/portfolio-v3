@@ -172,7 +172,7 @@ h4 {
 }
 
 .section {
-    padding: 6rem 0;
+    padding: 4rem 0;
 }
 
 /* Glassmorphism Classes */
@@ -651,7 +651,7 @@ h4 {
 .footer {
     text-align: center;
     padding: 2rem 0;
-    margin-top: 4rem;
+    margin-top: 2rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     color: var(--text-muted);
 }
@@ -757,6 +757,6 @@ h4 {
     }
 
     .section {
-        padding: 4rem 0;
+        padding: 3rem 0;
     }
 }
