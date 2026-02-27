@@ -92,11 +92,11 @@ body {
 .blob-3 {
     width: 500px;
     height: 500px;
-    background: #0f172a;
+    background: var(--accent-primary);
     bottom: -20%;
     left: 30%;
     animation-delay: -10s;
-    opacity: 0.6;
+    opacity: 0.1;
 }
 
 @keyframes float {
