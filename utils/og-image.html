@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OG Image Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #07090f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 1200px;
+      height: 630px;
+      position: relative;
+      background: #07090f;
+      overflow: hidden;
+      display: flex;
+    }
+
+    /* Subtle background texture dots */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(232,119,34,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      z-index: 0;
+    }
+
+    /* Left content area */
+    .left {
+      position: relative;
+      z-index: 2;
+      width: 560px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 60px;
+      gap: 28px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232, 119, 34, 0.15);
+      border: 1px solid rgba(232, 119, 34, 0.4);
+      border-radius: 100px;
+      padding: 6px 16px;
+      width: fit-content;
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e87722;
+    }
+
+    .tag-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #e87722;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .heading span {
+      background: linear-gradient(135deg, #e87722, #ff9d55);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #e87722, #ff9d55);
+      color: #07090f;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 100px;
+      width: fit-content;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-arrow {
+      font-size: 18px;
+    }
+
+    .url {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+    }
+
+    /* Diagonal divider */
+    .divider {
+      position: absolute;
+      top: 0;
+      left: 520px;
+      width: 100px;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Right photo area */
+    .right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 680px;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .photo-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #c45e10 0%, #e87722 40%, #ff9d55 70%, #ffb870 100%);
+    }
+
+    /* Diagonal clip on the left edge of right panel */
+    .right::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 100%;
+      background: #07090f;
+      clip-path: polygon(0 0, 100% 0, 40% 100%, 0 100%);
+      z-index: 2;
+    }
+
+    /* Thin orange accent line on the diagonal */
+    .right::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 75px;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, #ff9d55, #e87722);
+      transform: skewX(-8deg);
+      z-index: 3;
+    }
+
+    .photo {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 580px;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      z-index: 1;
+    }
+
+    /* Gradient overlay on photo bottom */
+    .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 180px;
+      background: linear-gradient(to top, rgba(232, 119, 34, 0.5), transparent);
+      z-index: 4;
+    }
+
+    /* Logo / branding mark top right */
+    .brand-mark {
+      position: absolute;
+      top: 32px;
+      right: 36px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-mark-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e87722, #ff9d55);
+    }
+
+    .brand-mark-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- Left text content -->
+    <div class="left">
+      <div class="tag">
+        <div class="tag-dot"></div>
+        <span class="tag-text">Software Technical Architect</span>
+      </div>
+
+      <div class="heading">
+        Ram<br><span>Prasad</span>
+      </div>
+
+      <div class="subtitle">
+        10+ years crafting full-stack systems, cloud architecture, and AI-driven innovation.
+      </div>
+
+      <div class="btn">
+        ramprasad.dev <span class="btn-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- Right photo area -->
+    <div class="right">
+      <div class="photo-bg"></div>
+      <img class="photo" src="../ram-pic.png" alt="Ram Prasad" onerror="this.style.display='none'">
+      <div class="photo-overlay"></div>
+    </div>
+
+    <!-- Brand mark -->
+    <div class="brand-mark">
+      <div class="brand-mark-dot"></div>
+      <span class="brand-mark-text">ramprasad.dev</span>
+    </div>
+
+  </div>
+</body>
+</html>
