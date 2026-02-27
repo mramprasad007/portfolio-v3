@@ -305,10 +305,11 @@ h4 {
 }
 
 .name {
+    font-family: 'DM Serif Display', serif;
     font-size: 5rem;
-    font-weight: 800;
+    font-weight: 400;
     margin-bottom: 1rem;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
 }
 
 .title {
