@@ -5,10 +5,6 @@ Software Technical Architect @ Optum | Full-Stack, Cloud & DevOps | AWS Certifie
 **Contact** 
 
 * 
-**Email:** mramprasad007@gmail.com 
-
-
-* 
 **LinkedIn:** [www.linkedin.com/in/ramprasad94](https://www.google.com/search?q=https://www.linkedin.com/in/ramprasad94) 
 
 
